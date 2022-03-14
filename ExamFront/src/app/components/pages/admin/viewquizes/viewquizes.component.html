@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <h5 class="text-center bg-white">Quizzes</h5>
+   <div class="card" *ngFor="let i of quizes">
+        <div class="card-body">
+            <h5 class="card-title"><i class='far fa-file-alt' style='font-size:24px'></i>  {{i.title}}</h5>
+            <p class="card-subtitle">{{i.category.title}}</p>
+            <p class="card-title">{{i.description}}</p>
+            <button type="button" class="btn btn-primary me-2" [routerLink]="'/admin/quiz/questions/'+i.quizId">Questions</button>
+            <button type="button" (click)="updateclick(i)" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+            <button type="button" class="btn btn-primary me-2">Attempts</button>
+            <button type="button" class="btn btn-outline-primary me-2">Max_Marks {{i.maxMarks}}</button>
+            <button type="button" class="btn btn-outline-primary me-2">Questions {{i.numberOfQuestions}}</button>
+            <button type="button" (click)="delete(i.quizId)" class="btn btn-danger">Delete</button>
+          </div>
+    </div>
+</div>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Quiz</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="updateQuiz()">
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Title</label>
+                <input readonly [(ngModel)]="updatequiz.title" name="title"  class="form-control" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Description</label>
+                <input [(ngModel)]="updatequiz.description" name="description" type="text" class="form-control" id="exampleInputPassword1">
+              </div>
+              
+              <div class="input-group mb-3">
+                <label for="marks">MaxMarks: </label>
+                <input [(ngModel)]="updatequiz.maxMarks" name="maxMarks" for="marks" class="form-control me-2" type="text"  placeholder="Enter MaxMarks">
+                <label for="questions">Questions: </label>
+                <input [(ngModel)]="updatequiz.numberOfQuestions" name="numberOfQuestions" for="questions" class="form-control" type="text" placeholder="Enter Questions">
+              </div>
+              <div class="mb-3 form-check">
+                <input [(ngModel)]="updatequiz.active" name="active" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Status</label>
+              </div>
+            <div class="modal-footer">
+              <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid text-center">
+    <button type="button" class="btn btn-primary me-2" routerLink="/admin/addquiz">Add Quiz</button>
+  </div>

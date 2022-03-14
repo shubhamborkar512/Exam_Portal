@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+          <div class="card p-2">
+            <div class="container text-center">
+              <img src="../../../../assets/logo.png" class="img-responsive" style="max-width: 25%;"/>
+              <h2 class="text-center">Register Here</h2>
+            </div>
+            <form (ngSubmit)="formSubmit()">
+                <!-- username -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">Username</label>
+                  <input required name="username" [(ngModel)]="user.username" type="text" class="form-control" >
+                </div>
+
+                <!-- firstName -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">FirstName</label>
+                  <input name="firstName" [(ngModel)]="user.firstName" type="text" class="form-control" >
+                </div>
+                <!-- lastName -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">LastName</label>
+                  <input name="lastName" [(ngModel)]="user.lastName" type="text" class="form-control" >
+                </div>
+                
+                <!-- email -->
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input name="email" [(ngModel)]="user.email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+                <!-- password -->
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input name="password" [(ngModel)]="user.password" type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+
+                <!-- Phone -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">Phone</label>
+                  <input name="phone" [(ngModel)]="user.phone" type="text" class="form-control" >
+                </div>
+                <div class="container text-center">
+                  <button type="submit" class="btn btn-primary me-2">Submit</button>
+                  <button id="resetform" type="reset" class="btn btn-warning">Reset</button>
+                </div>
+            </form>
+          </div>
+          </div>
+    </div>
+</div>

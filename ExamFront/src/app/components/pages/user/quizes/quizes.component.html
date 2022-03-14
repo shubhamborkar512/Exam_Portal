@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <h5 class="text-center bg-white">Quizzes</h5>
+    <h2 class="text-center bg-white" *ngIf="quizes.length==0">No Quiz Available for {{categoryTitle}}</h2>
+    <div class="card">
+        <div class="card" *ngFor="let i of quizes">
+            <div class="row p-2 " *ngIf="i.active">
+                <div class="col">
+                    <h5 class="card-title"><i class='far fa-file-alt' style='font-size:24px'></i> {{i.title}}</h5>
+                    <p class="card-subtitle">{{i.category.title}}</p>
+                    <p class="card-title">{{i.description}}</p>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-primary me-3" [routerLink]="'instructions/'+i.quizId">Start</button>
+                    <button type="button" class="btn btn-light me-3" style="color: crimson;">Questions 10</button>
+                    <button type="button" class="btn btn-light m-3" style="color: crimson;">MAX_Marks 20</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

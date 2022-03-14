@@ -1,0 +1,94 @@
+<div class="container-fluid" *ngIf="!finishExam">
+    <div class="card">
+        <div class="card-body">
+            <div class="container col-1 offset-11">
+                <button (click)="finishexam()" type="button" class="btn btn-danger float-right">Finish</button>
+            </div>
+            <h1 id="timer"></h1>
+        </div>
+        <div class="card-body mt-4">
+            <div class="row">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div *ngFor="let i of questions ; let idx=index">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Q. {{idx+1}} <span [innerHTML]="i.content"></span></h6>
+                                </div>
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="container col-6">
+                                            <input type="radio" name="{{idx}}" class="card-text" [value]="i.option1"
+                                                [(ngModel)]="i.userAns"><span> {{i.option1}}</span>
+                                        </div>
+                                        <div class="container col-6">
+                                            <input type="radio" name="{{idx}}" class="card-text" [value]="i.option2"
+                                                [(ngModel)]="i.userAns"><span> {{i.option2}}</span>
+                                        </div>
+                                        <div class="container col-6">
+                                            <input type="radio" name="{{idx}}" class="card-text" [value]="i.option3"
+                                                [(ngModel)]="i.userAns"><span> {{i.option3}}</span>
+                                        </div>
+                                        <div class="container col-6">
+                                            <input type="radio" name="{{idx}}" class="card-text" [value]="i.option4"
+                                                [(ngModel)]="i.userAns"><span> {{i.option4}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt-4 col-6 offset-3" *ngIf="finishExam">
+    <div class="card" >
+        <div class="card-body text-center" *ngIf="passStatus">
+            <img src="../../../../../assets/Congratulations-1.jpeg" class="img-fluid w-75" alt="Responsive image" alt="">
+            <h2 class="card-title mt-4">Result</h2>
+        </div>
+        <div class="card-body" >
+            <div class="row mt-2">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Total Questions</th>
+                            <td>{{questions.length}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Attempted</th>
+                            <td>{{Attempted}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Correct</th>
+                            <td>{{correct}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Percentage</th>
+                            <td>{{percentage}}%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td>{{passStatus?"Pass":"Fail"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="container text-center" *ngIf="!passStatus">
+                <div class="alert alert-danger" role="alert">
+                    To clear the exam you must need atleast 50%...
+                </div>
+            </div>
+            <div class="container text-center" >
+                <button (click)="printResult()" class="btn btn-primary me-2">Print</button>
+                <button routerLink="/user" class="btn btn-primary">Go Home</button>
+            </div>
+        </div>
+    </div>
+</div>

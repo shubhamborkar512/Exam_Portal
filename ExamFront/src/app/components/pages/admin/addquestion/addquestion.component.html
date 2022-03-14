@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body col-9 offset-1">
+        <h5 class="card-title text-center">Add Question</h5>
+        <form (ngSubmit)="formAdd()">
+            <div class="mb-3">
+                <!-- <label for="exampleInputPassword1" class="form-label">Question</label>
+                <input [(ngModel)]="question.content" name="content" class="form-control"> -->
+                <ckeditor  [(ngModel)]="question.content" name="content"  [editor]="Editor" data="<p>Enter your question here!!</p>"></ckeditor>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Option 1</span>
+                <input [(ngModel)]="question.option1" placeholder="option1" name="option2" type="text" class="form-control">
+                <span class="input-group-text" id="basic-addon1">Option 2</span>
+                <input [(ngModel)]="question.option2" placeholder="option2" name="option2" type="text" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Option 3</span>
+                <input [(ngModel)]="question.option3" placeholder="option3" name="option3" type="text"
+                    class="form-control">
+                <span class="input-group-text" id="basic-addon1">Option 4</span>
+                <input [(ngModel)]="question.option4" placeholder="option4" name="option4" type="text"
+                    class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Answer</span>
+                <input [(ngModel)]="question.answer" name="answer" type="text" class="form-control">
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary me-2">Add</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>

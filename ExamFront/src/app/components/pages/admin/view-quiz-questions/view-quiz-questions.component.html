@@ -1,0 +1,94 @@
+<div class="card">
+    <div class="card-body text-center" *ngIf="questions.length==0">
+        <h2>No Questions Available</h2>
+        <div class="card-body text-center">
+            <button routerLink="addquestion" type="button" class="btn btn-warning p-2">Add Question</button>
+        </div>
+    </div>
+</div>
+<div class="card-body text-center" *ngIf="questions.length!=0">
+    <button routerLink="addquestion" type="button" class="btn btn-warning p-2">Add Question</button>
+</div>
+
+<div *ngFor="let i of questions ; let idx=index">
+    <div class="card">
+        <div class="card-body">
+            <h6 >Q. {{idx+1}} <span [innerHTML]="i.content"></span></h6>
+        </div>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="container col-6">
+                    <p class="card-text">a. {{i.option1}}</p>
+                </div>
+                
+                <div class="container col-6">
+                    <p class="card-text">b. {{i.option2}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container col-6">
+                    <p class="card-text">c. {{i.option3}}</p>
+                </div>
+                
+                <div class="container col-6">
+                    <p class="card-text">d. {{i.option4}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="container">
+                    <p class="card-text">Answer: {{i.answer}}.</p>
+                </div>
+                <div class="container m-2">
+                    <button (click)="updateQueEvent(i)" data-bs-toggle="modal" data-bs-target="#exampleModal"  type="button" class="btn-sm btn-warning  me-2">Update</button>
+                    <button (click)="delete(i.qid)" type="button" class="btn-sm btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- model -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Quiz</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #updateform="ngForm" (ngSubmit)="updateQue(updateform.value)">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Question</label>
+                    <input [ngModel]="question.content" name="content" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Option 1</span>
+                    <input [ngModel]="question.option1" placeholder="option1" name="option1" type="text" class="form-control">
+                    <span class="input-group-text" id="basic-addon1">Option 2</span>
+                    <input [ngModel]="question.option2" placeholder="option2" name="option2" type="text" class="form-control">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Option 3</span>
+                    <input [ngModel]="question.option3" placeholder="option3" name="option3" type="text"
+                        class="form-control">
+                    <span class="input-group-text" id="basic-addon1">Option 4</span>
+                    <input [ngModel]="question.option4" placeholder="option4" name="option4" type="text"
+                        class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Answer</span>
+                    <input [ngModel]="question.answer" name="answer" type="text" class="form-control">
+                </div>
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-primary me-2">Add</button>
+                    <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

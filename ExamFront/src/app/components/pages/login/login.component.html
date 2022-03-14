@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card p-2">
+            <div class="container text-center">
+                <img src="../../../../assets/logo.png" class="img-responsive" style="max-width: 25%;"/>
+                <h2 >Login here</h2>
+            </div>
+
+            <form (ngSubmit)="formSubmit()">
+                <!-- username -->
+                <div class="mb-3">
+                    <label for="exampleInputUsername" class="form-label">Username</label>
+                    <input [(ngModel)]="loginData.username" required name="username" type="text" class="form-control">
+                </div>
+
+                <!-- password -->
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input [(ngModel)]="loginData.password" required name="password" type="password" class="form-control"
+                        id="exampleInputPassword1">
+                </div>
+
+                <div class="container text-center">
+                    <div class="container  mb-2">
+                        <button type="submit" class="btn btn-primary me-2">Login</button>
+                        <button id="resetform" type="reset" class="btn btn-warning">Reset</button>
+                    </div>
+                    <h6><a routerLink="/signup">New User ? Register Here</a></h6>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>

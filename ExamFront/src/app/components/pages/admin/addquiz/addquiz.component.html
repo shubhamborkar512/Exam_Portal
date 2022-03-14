@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-body col-7 offset-2">
+        <h5 class="card-title text-center">Add Quiz</h5>
+        <form (ngSubmit)="formAdd()">
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Title</label>
+                <input [(ngModel)]="quiz.title" name="title"  class="form-control" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Description</label>
+                <input [(ngModel)]="quiz.description" name="description" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">MaxMarks</span>
+                <input [(ngModel)]="quiz.maxMarks" name="maxMarks" for="marks" class="form-control me-2" type="text"  placeholder="Enter MaxMarks">
+                <span class="input-group-text" id="basic-addon1">Number Of Questions</span>
+                <input [(ngModel)]="quiz.numberOfQuestions" name="numberOfQuestions" for="questions" class="form-control" type="text" placeholder="Enter Questions">
+            </div>
+
+            <div class="mb-3">
+                <label for="category"  class="form-label">Select Category</label>
+                <select for="category" class="form-select" aria-label="Default select example" [(ngModel)]="quiz.category" name="category">
+                    <option selected>Select Category</option>
+                    <option *ngFor="let i of category" [ngValue]="i">{{i.title}}</option>
+                </select>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input [(ngModel)]="quiz.active" name="active" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Status</label>
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

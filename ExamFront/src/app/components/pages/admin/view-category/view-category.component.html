@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-body">
+        <div class="container-fluid text-center m-2">
+          <h2>All Categaries</h2>
+        </div>
+        <ul class="list-group" *ngFor="let i of categaries">
+            <li class="list-group-item">
+                <div class="container-fluid">
+                    <h5><i class="fa-solid fa-folder"></i> {{i.title}}</h5>
+                    <p>{{i.description}}</p>
+                </div>
+            </li>
+          </ul>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary" routerLink="/admin/addcategory">Add Category</button>
+          </div>
+    </div>
+  </div>

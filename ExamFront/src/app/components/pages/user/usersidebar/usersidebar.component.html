@@ -1,0 +1,7 @@
+<div class="card fixed-left" >
+    <div class="card-body fixed-left">   
+        <button class="btn bg-transperant" routerLink="/user"><i class="fa-solid fa-house"></i> Home</button>
+      <div  *ngFor="let i of categories">
+        <button [routerLink]="'/user/'+i.title+'/'+i.cid+'/quizes'" class="btn bg-transperant" ><i class="fa fa-list-alt" aria-hidden="true"></i> {{i.title}}</button>
+      </div>
+  </div>

@@ -1,0 +1,106 @@
+<div class="card" *ngIf="user">
+    <div class="card-body">
+        <h4 class="card-title text-center">Your Profile Details</h4>
+        <div class="container">
+            <div class="container text-center mt-2">
+                <img class="img-fluid rounded-circle" style="width: 15%;border: 1px solid;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RlT-ytB9A_TQFLKMqVYpdJiiRbckTCThmw&usqp=CAU">
+                <h2 class="mt-5">{{user.firstName}} {{user.lastName}}</h2>
+            </div>
+            <div class="container col-md-10 offset-md-1 mt-4 text-center">
+                <div class="row">
+                    <!-- table -->
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                        <tr>
+                            <td scope="row">UserId</td>
+                            <td>{{user.id}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Username</td>
+                            <td>{{user.username}}</td>
+                           
+                        </tr>
+                        <tr>
+                            <td scope="row">Email</td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Phone</td>
+                            <td>{{user.phone}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Role</td>
+                            <td>{{loginService.getUserRole() | uppercase}}</td>
+                           
+                        </tr>
+                        <tr>
+                            <td scope="row">Status</td>
+                            <td >{{user.enabled?"ACTIVE":"NOTACTIVE"}}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- footer -->
+                <div class="container">
+                    <button class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">UPDATE</button>
+                    <button class="btn btn-outline-primary">SHARE</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="update()">
+                <!-- username -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">Username</label>
+                  <input readonly required name="username" [(ngModel)]="user.username" type="text" class="form-control" >
+                </div>
+
+                <!-- firstName -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">FirstName</label>
+                  <input name="firstName" [(ngModel)]="user.firstName" type="text" class="form-control" >
+                </div>
+                <!-- lastName -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">LastName</label>
+                  <input name="lastName" [(ngModel)]="user.lastName" type="text" class="form-control" >
+                </div>
+                
+                <!-- email -->
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input name="email" [(ngModel)]="user.email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+                <!-- Phone -->
+                <div class="mb-3">
+                  <label for="exampleInputUsername" class="form-label">Phone</label>
+                  <input name="phone" [(ngModel)]="user.phone" type="text" class="form-control" >
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="updateButton" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
